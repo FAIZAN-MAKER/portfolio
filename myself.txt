@@ -1,0 +1,25 @@
+IDENTIFICATION
+Name: Faizan
+Role: Full-stack Developer
+Location: Lahore, Pakistan
+Email: un6902090@gmail.com
+Status: Open for Remote Engineering Roles
+
+CORE TECH STACK
+Frontend: Next.js (App Router), React, Tailwind CSS, Framer Motion, Three.js (React Three Fiber)
+Backend: Node.js, Express, PostgreSQL, MongoDB, Prisma, Appwrite
+Environment: EndeavourOS (Linux), Git, Cursor/OpenCode
+
+KEY PROJECTS
+1. SnapCart: A high-performance grocery delivery application built with Next.js, Redux, and MongoDB. Features real-time cart management and responsive UI.
+2. 3D Elite Portfolio: An interactive spatial experience featuring a Z-axis camera tunnel and 3D skill orbs built with Three.js.
+
+DEVELOPMENT PHILOSOPHY
+- Methodology: Build-to-learn. I prefer complex, production-grade projects over basic tutorials.
+- Design Preference: Dark mode, minimalist aesthetics, smooth motion-based interfaces.
+- Code Style: Strict TypeScript, clean architecture.
+
+PORTFOLIO REQUIREMENTS
+- Layout: Single-page responsive bento grid.
+- Sections: Hero, Projects, Skills (Visual Chips), Contact (Direct Email Link).
+- Animations: Subtle entrance reveals using Framer Motion.

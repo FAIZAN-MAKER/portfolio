@@ -59,6 +59,8 @@ const skillsData = [
   { name: "PostgreSQL", category: "Backend", usage: "Production", description: "Relational database" },
   { name: "MongoDB", category: "Backend", usage: "Frequent", description: "NoSQL database" },
   { name: "Prisma", category: "Backend", usage: "Frequent", description: "ORM for type safety" },
+  { name: "Django", category: "Backend", usage: "Core", description: "Python web framework" },
+  { name: "Django REST Framework", category: "Backend", usage: "Production", description: "REST API toolkit" },
   { name: "Git", category: "Tools", usage: "Core", description: "Version control" },
   { name: "Docker", category: "Tools", usage: "Exploring", description: "Containerization" },
   { name: "Vercel", category: "Tools", usage: "Production", description: "Deployment platform" },
@@ -68,13 +70,15 @@ const skillsData = [
 
 const projects = [
   {
-    name: "SnapCart",
-    category: "E-commerce Platform",
+    name: "Todo Manager",
+    category: "Full-Stack Application",
     description:
-      "Built a full-stack grocery delivery application with real-time cart management, optimized database queries, and a responsive interface that handles concurrent user sessions.",
-    impact: "Sub-second page loads · Real-time inventory updates",
-    stack: ["Next.js", "Redux", "MongoDB"],
-    stackColors: ["#0070f3", "#764abc", "#00ed64"],
+      "Built with Django as a first deep dive into the Python web ecosystem — features user authentication, a clean task dashboard, and a polished UI for managing daily todos.",
+    impact: "User auth system · Responsive task dashboard",
+    stack: ["Django", "SQLite", "Bootstrap"],
+    stackColors: ["#092e20", "#003b57", "#7952b3"],
+    liveUrl: "https://my-todo-app-70p5.onrender.com/todolist/",
+    githubUrl: "https://github.com/FAIZAN-MAKER/Todo_Manager_Django",
   },
   {
     name: "3D Elite Portfolio",
@@ -84,6 +88,19 @@ const projects = [
     impact: "Custom WebGL shaders · Spatial camera controls",
     stack: ["Three.js", "React Three Fiber"],
     stackColors: ["#049ef4", "#61dafb"],
+    liveUrl: "https://aetheria-dejm.vercel.app/",
+    githubUrl: "https://github.com/FAIZAN-MAKER/Aetheria",
+  },
+  {
+    name: "Todo Manager 2",
+    category: "Full-Stack Application",
+    description:
+      "Built with Django REST Framework and React for a modern todo experience — my first project combining DRF with a React frontend, featuring user authentication and a responsive task dashboard.",
+    impact: "DRF + React integration · JWT auth",
+    stack: ["React", "Django REST Framework", "Tailwind CSS"],
+    stackColors: ["#61dafb", "#092e20", "#06b6d4"],
+    liveUrl: "https://todomanagerrr.netlify.app/",
+    githubUrl: "https://github.com/FAIZAN-MAKER/todo_manager_2",
   },
 ];
 
@@ -607,7 +624,18 @@ function EmailCopyButton({ email }: { email: string }) {
   );
 }
 
-function ProjectCard({ project, index }: { project: typeof projects[0]; index: number }) {
+interface Project {
+  name: string;
+  category: string;
+  description: string;
+  impact: string;
+  stack: string[];
+  stackColors: string[];
+  liveUrl?: string;
+  githubUrl?: string;
+}
+
+function ProjectCard({ project, index }: { project: Project; index: number }) {
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -666,12 +694,38 @@ function ProjectCard({ project, index }: { project: typeof projects[0]; index: n
         ))}
       </div>
 
-      <motion.div style={{ display: "flex", alignItems: "center", gap: 8, opacity: hovered ? 1 : 0.5, transition: "opacity 0.25s ease" }}>
-        <span style={{ fontFamily: "DM Mono, monospace", fontSize: 12, fontWeight: 500, color: "#a78bfa" }}>View Project</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M5 12h14M12 5l7 7-7 7" />
-        </svg>
-      </motion.div>
+      <div style={{ display: "flex", alignItems: "center", gap: 12, opacity: hovered ? 1 : 0.5, transition: "opacity 0.25s ease" }}>
+        {project.liveUrl && (
+          <motion.a
+            href={project.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ x: 3 }}
+            style={{ display: "inline-flex", alignItems: "center", gap: 8, fontFamily: "DM Mono, monospace", fontSize: 12, fontWeight: 500, color: "#a78bfa", textDecoration: "none" }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            View Project
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </motion.a>
+        )}
+        {project.githubUrl && (
+          <motion.a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ x: 3 }}
+            style={{ display: "inline-flex", alignItems: "center", gap: 8, fontFamily: "DM Mono, monospace", fontSize: 12, fontWeight: 500, color: "#94a3b8", textDecoration: "none" }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#94a3b8">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+            </svg>
+            GitHub
+          </motion.a>
+        )}
+      </div>
     </motion.div>
   );
 }
@@ -694,8 +748,13 @@ const avatarVariant = {
 export default function Home() {
   const [loading, setLoading] = useState(true);
   const [showContent, setShowContent] = useState(false);
+  const [projectPage, setProjectPage] = useState(0);
   const skillsRef = useRef(null);
   const skillsInView = useInView(skillsRef, { once: true, margin: "-80px" });
+
+  const PROJECTS_PER_PAGE = 2;
+  const totalPages = Math.ceil(projects.length / PROJECTS_PER_PAGE);
+  const paginatedProjects = projects.slice(projectPage * PROJECTS_PER_PAGE, (projectPage + 1) * PROJECTS_PER_PAGE);
 
   const handlePreloaderComplete = () => {
     setLoading(false);
@@ -955,10 +1014,71 @@ export default function Home() {
                 </div>
 
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }} className="projects-grid">
-                  {projects.map((project, i) => (
+                  {paginatedProjects.map((project, i) => (
                     <ProjectCard key={project.name} project={project} index={i} />
                   ))}
                 </div>
+                {totalPages > 1 && (
+                  <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 16, marginTop: 32 }}>
+                    <motion.button
+                      onClick={() => setProjectPage((p) => Math.max(0, p - 1))}
+                      disabled={projectPage === 0}
+                      whileHover={projectPage > 0 ? { x: -2 } : {}}
+                      style={{
+                        display: "inline-flex", alignItems: "center", gap: 8,
+                        padding: "10px 20px", background: projectPage === 0 ? "transparent" : "rgba(124,58,237,0.12)",
+                        color: projectPage === 0 ? "#475569" : "#a78bfa",
+                        fontFamily: "DM Mono, monospace", fontSize: 12, fontWeight: 500,
+                        border: `1px solid ${projectPage === 0 ? "rgba(71,85,105,0.2)" : "rgba(124,58,237,0.25)"}`,
+                        borderRadius: 8, cursor: projectPage === 0 ? "not-allowed" : "pointer",
+                        opacity: projectPage === 0 ? 0.4 : 1, transition: "all 0.2s",
+                      }}
+                    >
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M19 12H5M12 19l-7-7 7-7" />
+                      </svg>
+                      Previous
+                    </motion.button>
+                    <div style={{ display: "flex", gap: 8 }}>
+                      {Array.from({ length: totalPages }).map((_, i) => (
+                        <motion.button
+                          key={i}
+                          onClick={() => setProjectPage(i)}
+                          whileHover={{ scale: 1.1 }}
+                          style={{
+                            width: 32, height: 32, borderRadius: 6,
+                            display: "flex", alignItems: "center", justifyContent: "center",
+                            fontFamily: "DM Mono, monospace", fontSize: 12, fontWeight: 600,
+                            background: i === projectPage ? "#7c3aed" : "rgba(148,163,184,0.06)",
+                            color: i === projectPage ? "#f5f5f5" : "#94a3b8",
+                            border: "none", cursor: "pointer", transition: "all 0.2s",
+                          }}
+                        >
+                          {i + 1}
+                        </motion.button>
+                      ))}
+                    </div>
+                    <motion.button
+                      onClick={() => setProjectPage((p) => Math.min(totalPages - 1, p + 1))}
+                      disabled={projectPage === totalPages - 1}
+                      whileHover={projectPage < totalPages - 1 ? { x: 2 } : {}}
+                      style={{
+                        display: "inline-flex", alignItems: "center", gap: 8,
+                        padding: "10px 20px", background: projectPage === totalPages - 1 ? "transparent" : "rgba(124,58,237,0.12)",
+                        color: projectPage === totalPages - 1 ? "#475569" : "#a78bfa",
+                        fontFamily: "DM Mono, monospace", fontSize: 12, fontWeight: 500,
+                        border: `1px solid ${projectPage === totalPages - 1 ? "rgba(71,85,105,0.2)" : "rgba(124,58,237,0.25)"}`,
+                        borderRadius: 8, cursor: projectPage === totalPages - 1 ? "not-allowed" : "pointer",
+                        opacity: projectPage === totalPages - 1 ? 0.4 : 1, transition: "all 0.2s",
+                      }}
+                    >
+                      Next
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                      </svg>
+                    </motion.button>
+                  </div>
+                )}
               </motion.div>
             </div>
           </section>

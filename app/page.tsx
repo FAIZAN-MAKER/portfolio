@@ -70,6 +70,17 @@ const skillsData = [
 
 const projects = [
   {
+    name: "AI Slide Builder",
+    category: "AI-Powered Application",
+    description:
+      "Enter any topic and get a professional 5-slide presentation deck generated end-to-end by AI — Groq writes the content, ModelsLab crafts a cover image, and you browse slides in a smooth 3D CSS carousel. Export as PDF or PNG.",
+    impact: "Groq LLaMA 3.1 · ModelsLab FLUX · 3D CSS carousel · PDF/PNG export · SSE streaming · localStorage persistence",
+    stack: ["Django", "Groq", "Tailwind CSS", "ModelsLab"],
+    stackColors: ["#092e20", "#facc15", "#06b6d4", "#7c3aed"],
+    liveUrl: "https://ai-slide-builder.onrender.com",
+    githubUrl: "https://github.com/FAIZAN-MAKER/ai-slide-builder",
+  },
+  {
     name: "Todo Manager",
     category: "Full-Stack Application",
     description:

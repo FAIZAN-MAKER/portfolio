@@ -78,7 +78,7 @@ const projects = [
     stack: ["Django", "Groq", "Tailwind CSS", "ModelsLab"],
     stackColors: ["#092e20", "#facc15", "#06b6d4", "#7c3aed"],
     liveUrl: "https://ai-slide-builder.onrender.com",
-    githubUrl: "https://github.com/LostInTheCode/ai-slide-builder",
+    githubUrl: "https://github.com/LostInTheLogic/ai-slide-builder",
   },
   {
     name: "Todo Manager",
@@ -89,7 +89,7 @@ const projects = [
     stack: ["Django", "SQLite", "Bootstrap"],
     stackColors: ["#092e20", "#003b57", "#7952b3"],
     liveUrl: "https://my-todo-app-70p5.onrender.com/todolist/",
-    githubUrl: "https://github.com/LostInTheCode/Todo_Manager_Django",
+    githubUrl: "https://github.com/LostInTheLogic/Todo_Manager_Django",
   },
   {
     name: "3D Elite Portfolio",
@@ -100,7 +100,7 @@ const projects = [
     stack: ["Three.js", "React Three Fiber"],
     stackColors: ["#049ef4", "#61dafb"],
     liveUrl: "https://aetheria-dejm.vercel.app/",
-    githubUrl: "https://github.com/LostInTheCode/Aetheria",
+    githubUrl: "https://github.com/LostInTheLogic/Aetheria",
   },
   {
     name: "Todo Manager 2",
@@ -111,7 +111,7 @@ const projects = [
     stack: ["React", "Django REST Framework", "Tailwind CSS"],
     stackColors: ["#61dafb", "#092e20", "#06b6d4"],
     liveUrl: "https://todomanagerrr.netlify.app/",
-    githubUrl: "https://github.com/LostInTheCode/todo_manager_2",
+    githubUrl: "https://github.com/LostInTheLogic/todo_manager_2",
   },
   {
     name: "TCP Socket Chat",
@@ -1141,7 +1141,7 @@ export default function Home() {
 
                 <div style={{ display: "flex", gap: 12 }}>
                   {[
-                    { href: "https://github.com/LostInTheCode", icon: <GitHubIcon /> },
+                    { href: "https://github.com/LostInTheLogic", icon: <GitHubIcon /> },
                     { href: "https://www.linkedin.com/in/muhammad-faizan-1a9917392/", icon: <LinkedInIcon /> },
                     { href: `mailto:${personalInfo.email}`, icon: <MailIcon /> },
                   ].map((link) => (

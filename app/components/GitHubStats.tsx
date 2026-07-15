@@ -200,11 +200,11 @@ async function fetchGitHubStats(): Promise<GitHubStats | null> {
 
   try {
     const [userRes, reposRes] = await Promise.all([
-      fetch("https://api.github.com/users/LostInTheCode", {
+      fetch("https://api.github.com/users/LostInTheLogic", {
         headers,
         next: { revalidate: 3600 },
       }),
-      fetch("https://api.github.com/users/LostInTheCode/repos?per_page=30&sort=pushed", {
+      fetch("https://api.github.com/users/LostInTheLogic/repos?per_page=30&sort=pushed", {
         headers,
         next: { revalidate: 3600 },
       }),
